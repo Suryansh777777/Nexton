@@ -14,7 +14,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (Window.scrollY > 100) {
+      if (window.scrollY > 100) {
         setisSticky(true);
       } else {
         setisSticky(false);
@@ -94,6 +94,27 @@ const Navbar = () => {
               )}
             </button>
           </div>
+        </div>
+
+        {/* mobile menu */}
+
+        <div
+          className={`space-y-4 px-4 mt-16 py-7 bg-brandPrimary ${
+            isMenuOpen ? "block fixed top-0 right-0 left-0 " : " hidden"
+          }`}
+        >
+          {navItems.map(({ link, path }) => (
+            <Link
+              to={path}
+              spy={true}
+              smooth={true}
+              offset={-100}
+              key={path}
+              className="block text-base text-gray900 hover:text-brandPrimary first:font-medium"
+            >
+              {link}
+            </Link>
+          ))}
         </div>
       </nav>
     </header>
